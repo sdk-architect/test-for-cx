@@ -69,10 +69,14 @@ const index = (app, db) => {
     // Handle redirect for learning resources link
     app.get("/learn", isLoggedIn, (req, res) => {
         // Insecure way to handle redirects by taking redirect url from query string
-        let param=req.query.url;
-        const hasSpecialChars = param => /[!@#$%^&*(),.?":{}|<>]/.test(param);
-        if (hasSpecialChars)
-            return res.redirect(req.query.url);
+        var param=req.query.url;
+        if (param.startsWith("https://www.trusteddomain.com/")) 
+        { 
+            res.redirect(url);
+        } else 
+        {
+            res.redirect("/");
+        }
     });
 
     // Research Page
