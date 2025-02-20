@@ -1,0 +1,67 @@
+server:
+  port: ${PORT:8982}
+logging:
+  file:
+    name: flow.log
+
+cxflow:
+  #bug-tracker: JIRA
+  #bug-tracker-impl:
+    # - Azure
+    # - Csv
+    # - CxXml
+    # - GitHub
+    # - GitLab
+    # - Rally
+    # - Json
+  branches:
+  - main
+  filter-severity:
+  # - High
+  filter-category:
+  - SQL_Injection
+  - Stored_XSS
+  - Reflected_XSS_All_Clients
+  filter-cwe:
+  filter-status:
+  # - Urgent
+  # - Confirmed
+  # - To Verify
+  #mitre-url: https://cwe.mitre.org/data/definitions/%s.html
+  #wiki-url: https://custodela.atlassian.net/wiki/spaces/AS/pages/79462432/Remediation+Guidance
+
+checkmarx:
+  version: 9.7.1.1000
+  username: sourish.das@checkmarx.com
+  password: m1sLhuv5S3tWP9,
+  #client-id: resource_owner_client
+  #client-secret: 014DF517-39D1-4453-B7B3-9930C563627C
+  scope: access_control_api sast_rest_api
+  base-url: http://sourishd-lt
+  #multi-tenant: true
+  configuration: Default Configuration
+  cx-branch: true
+  #scan-preset: Checkmarx Defaul
+  enabled-zip-scan: false
+  preserve-xml: true
+  team: /CxServer/Checkmarx/CxFlow
+  url: ${checkmarx.base-url}/cxrestapi
+  #scan-preset: Checkmarx Default
+  #incremental: true
+  #WSDL Config
+  portal-url: ${checkmarx.base-url}/cxwebinterface/Portal/CxWebService.asmx
+  sdk-url: ${checkmarx.base-url}/cxwebinterface/SDK/CxSDKWebService.asmx
+  portal-wsdl: ${checkmarx.base-url}/Portal/CxWebService.asmx?wsdl
+  sdk-wsdl: ${checkmarx.base-url}/SDK/CxSDKWebService.asmx?wsdl
+  scan-queuing: false
+  scan-queuing-timeout: 720
+
+github:
+  #webhook-token: 
+  token: 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
+  url: https://github.com
+  api-url: https://api.github.com/repos/
+  false-positive-label: false-positive
+  #block-merge: true
+  #error-merge: true
+  #cx-summary: true
